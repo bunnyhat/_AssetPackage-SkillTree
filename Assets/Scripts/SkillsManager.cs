@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SkillsManager : MonoBehaviour {
 
-	public float skillPoints, spentPoints;
+	public int skillPoints, spentPoints;
 	public Text skillPointsText;
 	public Button purchaseButton;
 	public Skill[] skills;
@@ -13,17 +13,9 @@ public class SkillsManager : MonoBehaviour {
 
 	void Awake() {
 		skillPoints = 1;
-		skillPointsText.text = "Skill Points: " + skillPoints;
 	}
 
 	void Update() {
-		SkillPointCheat();
-	}
-
-	void SkillPointCheat() {
-		if(Input.GetKeyDown(KeyCode.S)) {
-			skillPoints += 1;
-		}
 		skillPointsText.text = "Skill Points: " + skillPoints;
 	}
 
