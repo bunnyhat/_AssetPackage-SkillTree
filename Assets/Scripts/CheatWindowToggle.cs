@@ -7,6 +7,7 @@ public class CheatWindowToggle : MonoBehaviour {
 	[SerializeField] private bool isWindowOpen = false;
 	[SerializeField] RectTransform rectTransform;
 	[SerializeField] InputField cheatText;
+	[SerializeField] Image background;
 	
 	[SerializeField] SkillsManager skillsManager;
 
@@ -19,9 +20,11 @@ public class CheatWindowToggle : MonoBehaviour {
 		if(!isWindowOpen) {
 			rectTransform.localPosition = new Vector2(0, 400);
 			cheatText.text = "";
-		}
-		else { 
+			background.enabled = false;
+
+		} else { 
 			rectTransform.localPosition = new Vector2(0, 0);
+			background.enabled = true;
 		}
 
 		if(cheatText.text != "" && Input.GetKeyDown(KeyCode.KeypadEnter)) {
