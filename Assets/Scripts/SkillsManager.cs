@@ -12,7 +12,7 @@ public class SkillsManager : MonoBehaviour {
 	public Text skillName;
 
 	void Awake() {
-		skillPoints = 1;
+		skillPoints = 5;
 	}
 
 	void Update() {
@@ -21,12 +21,15 @@ public class SkillsManager : MonoBehaviour {
 
 	public void PurchaseSkill() {
 		if(skillName.text != "" && skillPoints >= 1) {
+			Debug.Log("i have points!");
 			for(int i = 0; i < skills.Length; i++) {
-				if(skills[i].name == skillName.text && !skills[i].isLocked && skills[i].minValue < skills[i].maxValue) {
+				if(skills[i].name == skillName.text && !skills[i].isLocked) {
 					Debug.Log(skillName.text + " purchased!");
-					skills[i].minValue += 1;
-					skillPoints -= 1;
-					spentPoints += 1;
+					if(skills[i].minValue < skills[i].maxValue) {
+						skills[i].minValue += 1;
+						skillPoints -= 1;
+						spentPoints += 1;
+					}
 				}
 			}
 		}
